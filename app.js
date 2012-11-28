@@ -77,7 +77,7 @@ io.sockets.on('connection', function(socket){
     });
 
     /**
-       @ function Handle goto event.
+       @function Handle goto event.
        When a goto event from an admin is sent, update status of current slide
        and informs all viewers of the new current slide
        @todo Implement authentification to make sure the event comes from a
