@@ -145,6 +145,7 @@ function ensureAuthenticated(req, res, next) {
     res.render('index', { error: req.flash('error') });
 }
 
+//Maggie is cool
 
 /** HTTP Server */
 var server = http.createServer(app).listen(app.get('port'), function(){
