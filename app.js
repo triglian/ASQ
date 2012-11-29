@@ -79,8 +79,8 @@ app.configure(function() {
     app.use(flash());
     app.use(passport.session());
     app.use(app.router);
-    app.use(require('stylus').middleware(__dirname + '/public/images'));
-    app.use(express.static(path.join(__dirname, '/public/images')));
+    app.use(require('stylus').middleware(__dirname + '/public/'));
+    app.use(express.static(path.join(__dirname, '/public/')));
 });
 
 app.configure('development', function(){
@@ -111,8 +111,11 @@ app.get('/js/:id', function(req, res) {
     res.sendfile('./js/' + req.params.id);
 });
 
+app.get('/checkusername/:username', registration.checkusername);
+
 //Registration happened. 
 app.post('/signup', registration.signup);
+
 
 //Someone types /user URL, if he's authenticated he sees his profile page, otherwise gets redirected
 app.get('/user', ensureAuthenticated, function(req,res) {
@@ -142,10 +145,10 @@ function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
-    res.render('index', { error: req.flash('error') });
+    res.render('index', { message: req.flash('error'), fromsignup:'false' });
 }
 
-//Maggie is cool
+
 
 /** HTTP Server */
 var server = http.createServer(app).listen(app.get('port'), function(){
@@ -171,11 +174,16 @@ io.sockets.on('connection', function(socket){
         socket.emit('goto', {slide:currentSlide});
         io.sockets.in('admins').emit('new', {});
     });
+    
+    
+     socket.on('usernamecheck', function(event) {
+        console.log('heheheh');
+    });
     /** @function Handle connection from admin. */
     socket.on('admin', function(event) {
         socket.join('admins');
     });
-
+    
     /**
        @ function Handle goto event.
        When a goto event from an admin is sent, update status of current slide
