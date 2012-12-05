@@ -35,9 +35,19 @@
 	          ['A) Lugano', 32],
 	          ['b) Luzern',  1],
 	          ['C) Bern',  2],
-	          ['D) Rome',  0],
-	          
+	          ['D) Rome',  0],  
 	        ]);
+	        var q1correct= google.visualization.arrayToDataTable([
+	          ['Correct answers',  'Number of answers'],
+	          ['Correct', 32],
+	          ['Wrong',  3],
+	        ]);
+	       	var q1partici = google.visualization.arrayToDataTable([
+	          ['Participation',  'Number of answers'],
+	          ['Answer', 35],
+	          ['No Answer',  0],
+	        ]);
+	        
 	
 	        var options = {
 	          animation: {duration: 100},
@@ -58,6 +68,18 @@
 	          hAxis: {textStyle: {color: '#999'}, allowContainerBoundaryTextCufoff: true, slantedTextAngle: 50},
 	          legend: {textStyle: {color: '#999'}}
 	        };
+	        
+	        var options3 = {
+	        	 backgroundColor: '#222325',
+	        	 titleTextStyle: {color: 'white'},
+      		    title: 'Correct vs. Wrong'
+     	   };
+     	    var options4 = {
+     	    	 backgroundColor: '#222325',
+     	    	 titleTextStyle: {color: 'white'},
+      		    title: 'Participation'
+     	   };
+
 	
 	        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
 	        chart.draw(data, options);
@@ -67,6 +89,13 @@
 	        chart2.draw(q1, options2);
 	        var chart2 = new google.visualization.ColumnChart(document.getElementById('q3'));
 	        chart2.draw(q1, options2);
+	        
+	        var chart3 = new google.visualization.PieChart(document.getElementById('Q1Correct'));
+        	chart3.draw(q1correct, options3);
+        	
+        	var chart4 = new google.visualization.PieChart(document.getElementById('Q1Partici'));
+        	chart4.draw(q1partici, options4);
+
 	      }
     </script>
 
@@ -145,6 +174,13 @@
 						<p>25</p>
 						<p>10</p>
 					</div>
+					<div class="span3">
+						<div id="Q1Correct" style="height: 150px;"></div>
+					</div>
+					<div class="span3">
+						<div id="Q1Partici" style="height: 150px;"></div>
+					</div>
+					
 					<div id="q1" class="span12 chart" style="height: 300px;margin-bottom: 30px"></div>
 				</div> 
 				
