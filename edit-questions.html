@@ -16,12 +16,11 @@
 			})
 		</script>
 		<style type="text/css" media="screen">
-    #editor { 
-        position: relative;
-        
-        height: 550px
-    }
-</style>
+			/*.modal{
+			   width:700px;
+			   margin-left:-350px;
+			}*/
+		</style>
 	</head>
 	<body>
 		
@@ -32,7 +31,7 @@
 					<div class="span8">
 						
 						<ul class="pull-left">
-							<li><a>All Presentations</a></li>
+							<li><a href="mypresentations.html">All Presentations</a></li>
 							<li><a>Upload Presentation</a></li>
 							<li><a>Settings</a></li>
 						</ul>
@@ -62,23 +61,53 @@
 				
 				
 					<div id="editorQuestions" class="span12">
-						<table>
-						  <caption>...</caption>
+						<table class="table">
 						  <thead>
 						    <tr>
 						      <th>#</th>
 						      <th>Question</th>
 						      <th>Type</th>
-						      <th>Slide</th>
+						      <th>Position</th>
+						      <th>Actions</th>
 						    </tr>
 						  </thead>
 						  <tbody>
 						    <tr>
-						      <td>...</td>
-						      <td>...</td>
+						      <td>1</td>
+						      <td>USI is the university of?</td>
+						      <td>Multiple choice</td>
+						      <td>5</td>
+						      <td>
+						      	<a href="#"><i class="icon-pencil icon-white"></i></a> &nbsp;&nbsp;
+						      	<a href="#"><i class="icon-trash icon-white"></i></a>	&nbsp;&nbsp;
+						      	<a href="#"><i class="icon-resize-vertical icon-white"></i></a> &nbsp;&nbsp;
+						      </td>
+						    </tr>
+						    <tr>
+						      <td>2</td>
+						      <td>lugano is located in?</td>
+						      <td>Multiple choice</td>
+						      <td>7</td>
+						      <td>
+						      	<a href="#"><i class="icon-pencil icon-white"></i></a> &nbsp;&nbsp;
+						      	<a href="#"><i class="icon-trash icon-white"></i></a>	&nbsp;&nbsp;
+						      	<a href="#"><i class="icon-resize-vertical icon-white"></i></a> &nbsp;&nbsp;
+						      </td>
+						    </tr>
+						    <tr>
+						      <td>3</td>
+						      <td>What is 3+5 ?</td>
+						      <td>Numeric answer</td>
+						      <td>10</td>
+						      <td>
+						      	<a href="#"><i class="icon-pencil icon-white"></i></a> &nbsp;&nbsp;
+						      	<a href="#"><i class="icon-trash icon-white"></i></a>	&nbsp;&nbsp;
+						      	<a href="#"><i class="icon-resize-vertical icon-white"></i></a> &nbsp;&nbsp;
+						      </td>
 						    </tr>
 						  </tbody>
 						</table>
+						<a href="#" data-toggle="modal" data-target="#myModal" class="span12" style="text-align: center; color: white"><i class="icon-plus-sign icon-white"></i> Add question </a>
 					</div>
 	
 					
@@ -88,6 +117,77 @@
 			
 		</div>
 
+	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	    <h3 id="myModalLabel">Add or edit question</h3>
+	  </div>
+	  <div class="modal-body">
+	    <form class="form-horizontal">
+		  <div class="control-group">
+		    <label class="control-label" for="inputQuestion">Question text:</label>
+		    <div class="controls">
+		      <input type="text" id="inputQuestion" placeholder="In which country is Lugano?">
+		    </div>
+		  </div>
+		  <div class="control-group">
+		    <label class="control-label" for="inputType">Password</label>
+		    <div class="controls">
+		      <select id="inputType">
+				  <option>Multiple choice</option>
+				  <option>Numeric input</option>
+				  <option>Text input</option>
+				</select>
+		    </div>
+		  </div>
+		  <div class="control-group">
+		    <label class="control-label" for="inputType">After slide</label>
+		    <div class="controls">
+		      <select id="inputType">
+				  <option>1</option>
+				  <option>2</option>
+				  <option>3</option>
+				  <option>4</option>
+				  <option>5</option>
+				  <option>6</option>
+				</select>
+		    </div>
+		  </div>
+		  <div class="control-group">
+		    <label class="control-label" for="inputOptions">Answer Options</label>
+		    <div class="controls">
+		    	
+		    
+			    <div class="controls-row">
+			      <input type="text" id="inputOption1" placeholder="Switzerland">
+			      <label class="checkbox"><input type="checkbox"> Correct</label>
+			    </div>
+			    
+			    <div class="controls-row">
+			      <input type="text" id="inputOption1" placeholder="Germany">
+			      <label class="checkbox"><input type="checkbox"> Correct</label>
+			    </div>
+			    
+			    <div class="controls-row">
+			      <input type="text" id="inputOption1" placeholder="Italy">
+			      <label class="checkbox"><input type="checkbox"> Correct</label>
+			    </div>
+			    
+			    <div class="controls-row">
+			      <input type="text" id="inputOption1" placeholder="Spain">
+			      <label class="checkbox"><input type="checkbox"> Correct</label>
+			    </div>
+		    
+		    </div>
+		  </div>
+		 </form>
+	  </div>
+	  <div class="modal-footer">
+	    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+	    <button class="btn btn-primary">Save changes</button>
+	  </div>
+	</div>
+	
 	<script src="http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 	<script>
 	    var editor = ace.edit("editor");
