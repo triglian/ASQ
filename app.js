@@ -194,7 +194,7 @@ app.get('/user/:username/editimages/', ensureAuthenticated, function (req,res) {
 app.get('/user/:username/editstyle/', ensureAuthenticated, function (req,res) {
     res.render('editstyle', {username: req.user.name});
 });
-app.get('/user/:username/edithtml', ensureAuthenticated, registration.edithtml);
+app.get('/user/:username/edithtml', ensureAuthenticated, routes.edit.editHTML);
 
 app.get('/render/', ensureAuthenticated, registration.parsequestion);
 app.get('/render2/',  registration.sendanswer);
